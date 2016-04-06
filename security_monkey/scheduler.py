@@ -110,6 +110,18 @@ scheduler = Scheduler(
     misfire_grace_time=30
 )
 
+from apscheduler.events import EVENT_JOB_EXECUTED, EVENT_JOB_ERROR
+
+def scheduler_event_listener(event):
+    if event.exception:
+        app.logger.critical('SCHEDULER job crashed :(. Killing scheduler. Supervisor should restart.')
+        # Todo: kill the scheduler
+        scheduler.shutdown()
+    else:
+        app.logger.info('SCHEDULER: The completed successfully :)')
+
+
+scheduler.add_listener(scheduler_event_listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
 
 def setup_scheduler():
     """Sets up the APScheduler"""
