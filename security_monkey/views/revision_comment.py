@@ -65,11 +65,6 @@ class RevisionCommentGet(AuthenticatedService):
             :statuscode 404: Revision Comment with given ID not found.
             :statuscode 401: Authentication Error. Please Login.
         """
-
-        auth, retval = __check_auth__(self.auth_dict)
-        if auth:
-            return retval
-
         query = ItemRevisionComment.query.filter(ItemRevisionComment.id == comment_id)
         query = query.filter(ItemRevisionComment.revision_id == revision_id)
         irc = query.first()
@@ -125,11 +120,6 @@ class RevisionCommentDelete(AuthenticatedService):
             :statuscode 404: Revision Comment with given ID not found.
             :statuscode 401: Authentication Error. Please Login.
         """
-
-        auth, retval = __check_auth__(self.auth_dict)
-        if auth:
-            return retval
-
         query = ItemRevisionComment.query.filter(ItemRevisionComment.id == comment_id)
         query = query.filter(ItemRevisionComment.revision_id == revision_id)
         irc = query.first()

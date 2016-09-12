@@ -316,10 +316,6 @@ class WhitelistGetPutDelete(AuthenticatedService):
             :statuscode 202: accepted
             :statuscode 401: Authentication Error. Please Login.
         """
-        auth, retval = __check_auth__(self.auth_dict)
-        if auth:
-            return retval
-
         NetworkWhitelistEntry.query.filter(NetworkWhitelistEntry.id == item_id).delete()
         db.session.commit()
 

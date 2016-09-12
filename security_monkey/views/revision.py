@@ -76,10 +76,6 @@ class RevisionGet(AuthenticatedService):
             :statuscode 200: no error
             :statuscode 401: Authentication failure. Please login.
         """
-        auth, retval = __check_auth__(self.auth_dict)
-        if auth:
-            return retval
-
         query = ItemRevision.query.filter(ItemRevision.id == revision_id)
         result = query.first()
 
