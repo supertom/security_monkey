@@ -14,7 +14,6 @@
 
 from security_monkey.common.PolicyDiff import PolicyDiff
 from security_monkey.views import AuthenticatedService
-from security_monkey.views import __check_auth__
 from security_monkey.views import REVISION_FIELDS
 from security_monkey.views import REVISION_COMMENT_FIELDS
 from security_monkey.views import ITEM_FIELDS

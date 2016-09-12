@@ -13,7 +13,6 @@
 #     limitations under the License.
 
 from security_monkey.views import AuthenticatedService
-from security_monkey.views import __check_auth__
 from security_monkey.views import WHITELIST_FIELDS
 from security_monkey.datastore import NetworkWhitelistEntry
 from security_monkey import db, rbac
