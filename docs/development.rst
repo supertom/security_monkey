@@ -46,10 +46,10 @@ Sample Watcher structure::
         # Look up relevant items, convert to list of SampleItem's, return list
 
     class SampleItem(ChangeItem):
-        def __init__(self, account=None, name=None, config={}):
+        def __init__(self, account=None, name=None, region=None, config={}):
             super(SampleItem, self).__init__(
-                    index=IAMGroup.index,
-                    region='universal',
+                    index=Sample.index,
+                    region=region,
                     account=account,
                     name=name,
                     new_config=config)
