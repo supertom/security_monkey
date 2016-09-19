@@ -239,6 +239,9 @@ class IAMSSL(Watcher):
                 except Exception as e:
                     app.logger.warn(traceback.format_exc())
                     app.logger.error("Invalid certificate {}!".format(cert.server_certificate_id))
+                    self.slurp_exception(
+                        (self.index, account, 'universal', cert.server_certificate_name),
+                        e, exception_map, source="{}-watcher".format(self.index))
 
         except Exception as e:
             app.logger.warn(traceback.format_exc())
